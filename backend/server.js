@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import logger from "./config/logger.js";
 import { connectDB } from "./config/database.js";
+import router from "./routes/users.js";
 
 dotenv.config();
 
@@ -16,13 +17,17 @@ const NODE_ENV = process.env.NODE_ENV || "development";
 connectDB();
 
 // === Middleware ===
+
+const corsOptions = {
+  origin: "http://localhost:3000", // Replace with the URL of your frontend (Vite-React app)
+  credentials: true, // Allows cookies to be sent and received
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
 if (NODE_ENV === "development") {
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-      credentials: true,
-    })
-  );
+  // CORS
+  app.use(cors(corsOptions));
+  // MORGAN
   app.use(morgan("dev"));
   logger.info("[DEV MODE] CORS and HTTP logging enabled");
 } else {
@@ -37,6 +42,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("Server is running.");
 });
+
+app.use('/api/users', router);
+// app.use('/api/items', router);
+// app.use('/api/request', router);
+// app.use('/api/chat', router);
+// app.use('/api/contact', router);
 
 // === Start Server ===
 connectDB().then(() => {
