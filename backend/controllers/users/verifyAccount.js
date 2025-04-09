@@ -1,7 +1,7 @@
 import User from '../../models/User.js';
 import logger from '../../config/logger.js';
 
-export const verifyAccount = async (req, res) => {
+const verifyAccount = async (req, res) => {
   const { token } = req.query; // Get the token from the query parameters
 
   if (!token) {
@@ -39,3 +39,5 @@ export const verifyAccount = async (req, res) => {
     res.status(500).json({ message: 'Server error during account verification' });
   }
 };
+
+export default verifyAccount;

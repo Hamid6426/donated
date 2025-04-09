@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
 import logger from "../../config/logger.js";
 
-export const patchUserRole = async (req, res) => {
+const patchUserRole = async (req, res) => {
   const { userId: currentUserId, role: currentUserRole } = req.user; // From auth middleware
   const { newRole } = req.body;
 
@@ -37,3 +37,5 @@ export const patchUserRole = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export default patchUserRole;

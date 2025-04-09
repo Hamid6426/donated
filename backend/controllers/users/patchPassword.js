@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import User from "../../models/User.js";
 import logger from "../../config/logger.js";
 
-export const patchPassword = async (req, res) => {
+const patchPassword = async (req, res) => {
   const { userId } = req; // Assuming userId is attached by auth middleware
   const { currentPassword, newPassword } = req.body;
 
@@ -36,3 +36,5 @@ export const patchPassword = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export default patchPassword;

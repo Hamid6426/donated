@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "../../models/User.js";
 import logger from "../../config/logger.js";
 
-export const loginUser = async (req, res) => {
+const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -76,3 +76,5 @@ export const loginUser = async (req, res) => {
     return res.status(500).json({ message: "Server error during login" });
   }
 };
+
+export default loginUser;

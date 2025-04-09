@@ -5,7 +5,7 @@ import User from "../../models/User.js";
 import logger from "../../config/logger.js";
 import { sendEmail } from "../../services/sendEmail.js";
 
-export const registerUser = async (req, res) => {
+const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
@@ -118,3 +118,5 @@ export const registerUser = async (req, res) => {
     res.status(500).json({ message: "Server error occurred during registration." });
   }
 };
+
+export default registerUser;

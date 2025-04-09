@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
 import logger from "../../config/logger.js";
 
-export const logoutUser = async (req, res) => {
+const logoutUser = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken;
 
@@ -37,3 +37,6 @@ export const logoutUser = async (req, res) => {
     return res.status(500).json({ message: "Server error during logout" });
   }
 };
+
+export default logoutUser;
+

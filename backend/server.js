@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import logger from "./config/logger.js";
 import { connectDB } from "./config/database.js";
-import router from "./routes/users.js";
+import userRouter from "./routes/userRouter.js";
 
 dotenv.config();
 
@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
   res.send("Server is running.");
 });
 
-app.use('/api/users', router);
+app.use('/api/users', userRouter);
 // app.use('/api/items', router);
 // app.use('/api/request', router);
 // app.use('/api/chat', router);

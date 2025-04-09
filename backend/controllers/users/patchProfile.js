@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
 import logger from "../../config/logger.js";
 
-export const patchProfile = async (req, res) => {
+const patchProfile = async (req, res) => {
   const { userId } = req; // From auth middleware
   const updates = req.body;
 
@@ -69,3 +69,5 @@ export const patchProfile = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export default patchProfile;

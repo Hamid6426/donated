@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
-import logger from "../../config/logger.js";
+import logger from "../../config/lcogger.js";
 
-export const addAdmin = async (req, res) => {
+const addAdmin = async (req, res) => {
   const { role: currentUserRole } = req.user; // Retrieved from the authentication middleware
   const { userId: targetUserId, targetUserNewRole } = req.body;
 
@@ -38,3 +38,5 @@ export const addAdmin = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export default addAdmin;

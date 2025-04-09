@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../../models/User.js";
 
-export const refreshToken = async (req, res) => {
+const refreshToken = async (req, res) => {
   try {
     const { refreshToken } = req.cookies; // Get the refresh token from cookies
 
@@ -46,3 +46,5 @@ export const refreshToken = async (req, res) => {
     res.status(500).json({ message: "Server error while refreshing token" });
   }
 };
+
+export default refreshToken;
